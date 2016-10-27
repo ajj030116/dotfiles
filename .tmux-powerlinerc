@@ -52,7 +52,7 @@
 
 # mailcount.sh {
 	# Mailbox type to use. Can be any of {apple_mail, gmail, maildir, mbox, mailcheck}
-	export TMUX_POWERLINE_SEG_MAILCOUNT_MAILBOX_TYPE=""
+	export TMUX_POWERLINE_SEG_MAILCOUNT_MAILBOX_TYPE="apple_mail"
 	
 	## Gmail
 	# Enter your Gmail username here WITH OUT @gmail.com.( OR @domain)
@@ -84,15 +84,15 @@
 
 # now_playing.sh {
 	# Music player to use. Can be any of {audacious, banshee, cmus, itunes, lastfm, mocp, mpd, mpd_simple, pithos, rdio, rhythmbox, spotify, spotify_wine, file}.
-	export TMUX_POWERLINE_SEG_NOW_PLAYING_MUSIC_PLAYER=""
+	export TMUX_POWERLINE_SEG_NOW_PLAYING_MUSIC_PLAYER="spotify"
 	# File to be read in case the song is being read from a file
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_FILE_NAME=""
 	# Maximum output length.
-	export TMUX_POWERLINE_SEG_NOW_PLAYING_MAX_LEN="40"
+	export TMUX_POWERLINE_SEG_NOW_PLAYING_MAX_LEN="20"
 	# How to handle too long strings. Can be {trim, roll}.
-	export TMUX_POWERLINE_SEG_NOW_PLAYING_TRIM_METHOD="trim"
+	export TMUX_POWERLINE_SEG_NOW_PLAYING_TRIM_METHOD="roll"
 	# Charcters per second to roll if rolling trim method is used.
-	export TMUX_POWERLINE_SEG_NOW_PLAYING_ROLL_SPEED="2"
+	export TMUX_POWERLINE_SEG_NOW_PLAYING_ROLL_SPEED="5"
 	
 	# Hostname for MPD server in the format "[password@]host"
 	export TMUX_POWERLINE_SEG_NOW_PLAYING_MPD_HOST="localhost"
@@ -140,5 +140,5 @@
 	# 1. Go to Yahoo weather http://weather.yahoo.com/
 	# 2. Find the weather for you location
 	# 3. Copy the last numbers in that URL. e.g. "http://weather.yahoo.com/united-states/california/newport-beach-12796587/" has the numbers "12796587"
-	export TMUX_POWERLINE_SEG_WEATHER_LOCATION="London"
+	export TMUX_POWERLINE_SEG_WEATHER_LOCATION="27599189"
 # }
