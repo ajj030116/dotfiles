@@ -16,7 +16,7 @@
 	f = fetch
 	i = init
 	m = merge --no-ff
-	l = log ––pretty=tformat:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+        l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	cl = clone
 	b = branch
 	aa = add --all
