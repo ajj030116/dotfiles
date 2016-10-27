@@ -12,7 +12,7 @@ fi
 
 # Customize to your needs...
 
-source ~/.tmuxinator/tmuxinator.zsh
+source ~/.tmuxinator.zsh
 
 fpath=(~/.zsh $fpath)
-alias config='/usr/bin/git --git-dir=/home/vagrant/.cfg --work-tree=/home/vagrant'
+alias config='/usr/bin/git --git-dir=${ZDOTDIR:-$HOME}/.cfg --work-tree=${ZDOTDIR:-$HOME}/'

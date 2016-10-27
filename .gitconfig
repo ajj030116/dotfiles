@@ -23,7 +23,7 @@
 	ph = push
 	cfg = config -l
 	rb = rebase
-	standup = log ––since yesterday ––author joe ––all
+	standup = log ––since yesterday ––author adam ––all
 [core]
 	excludesfile = ~/.gitignore_global
 [diff]
