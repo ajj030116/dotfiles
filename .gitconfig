@@ -2,11 +2,11 @@
 	default = simple
 [user]
 	name = adam
-	email = adjoinant@gmail.com
+	email = adam@elliptic.co
 [alias]
 	co = checkout
 	cm = commit
-	cmm = commit -a -m
+	cmm = commit -m
 	cma = commit --amend
 	pl = pull
 	d = diff
@@ -33,3 +33,9 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 
+[difftool "sourcetree"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	trustExitCode = true
