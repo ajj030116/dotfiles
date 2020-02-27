@@ -1,41 +1,79 @@
-[push]
-	default = simple
+
 [user]
 	name = adam
 	email = adam@elliptic.co
+
 [alias]
-	co = checkout
-	cm = commit
-	cmm = commit -m
-	cma = commit --amend
-	pl = pull
-	d = diff
-	h = help
-	st = status -sb
-	a = add
-	f = fetch
-	i = init
-	m = merge --no-ff
-        l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	cl = clone
-	b = branch
-	aa = add --all
-	ph = push
-	cfg = config -l
-	rb = rebase
-	standup = log ––since yesterday ––author adam ––all
+    co = checkout
+    cm = commit
+    cmm = commit -m
+    cma = commit --amend
+    pl = pull
+    d = diff
+    h = help
+    st = status -sb
+    a = add
+    f = fetch
+    i = init
+    m = merge --no-ff
+    cl = clone
+    b = branch
+    dt = difftool
+    dtt = difftool HEAD~1
+    aa = add --all
+    ph = push
+    cfg = config -l
+    rb = rebase
+    rbo = rebase --onto
+    prune = fetch --prune
+    stash-all = stash save --include-untracked
+    lg = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    grog = log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)'
+    standup = log ––since=yesterday.midnight ––author=adam ––all
+
+#[commit]
+#    gpgSign = true
+
 [core]
-	excludesfile = ~/.gitignore_global
+    excludesfile = ~/.gitignore_global
+	editor = micro
+
 [diff]
-	tool = diffmerge
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+    tool = icdiff
+
+[difftool]
+    prompt = false
+
+[difftool "icdiff"]
+    cmd = icdiff --line-numbers --no-bold $LOCAL $REMOTE
 
 [difftool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
 	path = 
+
+[filter "media"]
+    required = true
+    clean = git media clean %f
+    smudge = git media smudge %f
+
+[merge]
+    conflictstyle = diff3
+    # Standard diff is two sets of final changes. This introduces the original text before each side's changes.
+    # https://git-scm.com/docs/git-config#git-config-mergeconflictStyle
+
 [mergetool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 	trustExitCode = true
+
+[push]
+    default = simple
+
+[status]
+    showUntrackedFiles = all
+    # Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
+    # https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
