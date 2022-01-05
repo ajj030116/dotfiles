@@ -1,0 +1,95 @@
+[user]
+	name = adam
+	email = adam@elliptic.co
+
+[alias]
+    co = checkout
+    cm = commit
+    cmm = commit -m
+    cma = commit --amend
+    pl = pull
+    d = diff
+    h = help
+    st = status -sb
+    a = add
+    f = fetch
+    i = init
+    m = merge --no-ff
+    cl = clone
+    b = branch
+    dt = diff
+    dtt = diff HEAD~1
+    aa = add --all
+    au = add -u
+    ph = push
+    cfg = config -l
+    rb = rebase
+    rbo = rebase --onto
+    prune = fetch --prune
+    files = ls-tree --full-tree --name-only -r HEAD
+    stash-all = stash save --include-untracked
+    lg = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    grog = log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)'
+    standup = log ––since=yesterday.midnight ––author=adam ––all
+    branch-root = !zsh -c 'diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
+    br = branch-root
+
+[core]
+    excludesfile = ~/.gitignore_global
+    pager = delta
+    editor = micro
+
+# [diff]
+#     tool = icdiff
+
+# [difftool]
+#     prompt = false
+
+# [difftool "icdiff"]
+#     cmd = icdiff --line-numbers --no-bold $LOCAL $REMOTE
+
+
+[filter "media"]
+    required = true
+    clean = git media clean %f
+    smudge = git media smudge %f
+
+[merge]
+    conflictstyle = diff3
+    # Standard diff is two sets of final changes. This introduces the original text before each side's changes.
+    # https://git-scm.com/docs/git-config#git-config-mergeconflictStyle
+
+[push]
+    default = simple
+
+[status]
+    showUntrackedFiles = all
+    # Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
+    # https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
+
+[filter "lfs"]
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+[pull]
+	ff = only
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = decorations
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
+    side-by-side = true
